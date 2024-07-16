@@ -1,6 +1,6 @@
 // clang-format off
 #include "catch2/catch_all.hpp"
-#include <integratorxx/quadratures/muraknowles.hpp>
+#include <integratorxx/quadratures/radial/muraknowles.hpp>
 #include <numeric>
 #include <vector>
 // clang-format on
@@ -50,8 +50,8 @@ TEST_CASE("48 point MuraKnowles", "[1d-quad]") {
       63.288684869795212,      101.72526373304323,      174.33040888875871,
       330.69364765060254,      753.72105349957747,      2659.6767864598341};
 
-  IntegratorXX::MuraKnowlesRadialTraits traits{7.0};
-  IntegratorXX::MuraKnowles<double, double> quad(48, traits);
+  IntegratorXX::MuraKnowlesRadialTraits traits{48, 7.0};
+  IntegratorXX::MuraKnowles<double, double> quad(traits);
 
   const auto& pts = quad.points();
   const auto& wgt = quad.weights();
